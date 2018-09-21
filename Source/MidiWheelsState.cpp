@@ -37,7 +37,7 @@ void MidiWheelsState::processNextMidiEvent (const MidiMessage& message)
     {
         pitchWheelInternal (message.getChannel(), message.getPitchWheelValue());
     }
-    else if (message.isNoteOff())
+    else if (message.isControllerOfType(1))
     {
         modWheelInternal (message.getChannel(), message.getControllerValue());
     }

@@ -106,6 +106,8 @@ public:
                                          });
         };
         keyboardState.addListener (this);
+        wheelsState.addListener(this);
+        
 
         addAndMakeVisible (midiInputSelector .get());
         addAndMakeVisible (midiOutputSelector.get());
@@ -121,6 +123,7 @@ public:
         midiInputs .clear();
         midiOutputs.clear();
         keyboardState.removeListener (this);
+        wheelsState.removeListener(this);
 
         midiInputSelector .reset();
         midiOutputSelector.reset();
@@ -156,7 +159,7 @@ public:
 
     void handleModWheel(MidiWheelsState* source,int midiChannel,  int position)override
     {
-        MidiMessage m (MidiMessage::pitchWheel(midiChannel,  position));
+        MidiMessage m (MidiMessage::controllerEvent(midiChannel, 1, position));
         m.setTimeStamp (Time::getMillisecondCounterHiRes() * 0.001);
         sendToOutputs (NULL,m);
     }
@@ -175,7 +178,7 @@ public:
             midiString << "\n";
         }
         if(mm.isPitchWheel() || mm.isControllerOfType(1)){
-            midiWheelsState.processNextMidiEvent(mm);//midiWheels.setWheels( NULL, mm);
+            wheelsState.processNextMidiEvent(mm);//midiWheels.setWheels( NULL, mm);
             midiString << (mm.isPitchWheel() ? String ("Pitch wheel: ") : String ("Mod wheel: "));
             //midiString << (MidiMessage::getControllerValue(mm.getControllerValue(),true,true,true));
             midiString << (String (" value = "));
@@ -515,7 +518,7 @@ private:
     ReferenceCountedArray<MidiDeviceListEntry> midiOutputs;
 
     VirtualMidi vMidi;
-    MidiWheelsState midiWheelsState;
+    MidiWheelsState wheelsState;
     MidiWheelsComponent midiWheels;
    //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SmartMidi)

@@ -1,0 +1,3 @@
+[submodule "Builds/MacOSX"]
+	path = Builds/MacOSX
+	url = https://github.com/thepostman2/SmartMidi-MacOSX.git

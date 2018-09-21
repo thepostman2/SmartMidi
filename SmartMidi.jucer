@@ -5,15 +5,15 @@
               projectType="guiapp" id="Zhg5TG" jucerVersion="5.3.2">
   <MAINGROUP id="c3T9Au" name="SmartMidi">
     <GROUP id="{DF70C0C5-A5BC-B438-CDAE-9213AABDBDA7}" name="Source">
-      <FILE id="XNhlO9" name="MidiWheelsState.cpp" compile="1" resource="0"
-            file="Source/MidiWheelsState.cpp"/>
-      <FILE id="TF9uA3" name="MidiWheelsState.h" compile="0" resource="0"
-            file="Source/MidiWheelsState.h"/>
       <FILE id="nVSk47" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
       <FILE id="vJoxnL" name="MidiWheelsComponent.cpp" compile="1" resource="0"
             file="Source/MidiWheelsComponent.cpp"/>
       <FILE id="f7lrot" name="MidiWheelsComponent.h" compile="0" resource="0"
             file="Source/MidiWheelsComponent.h"/>
+      <FILE id="rfWQPZ" name="MidiWheelsState.cpp" compile="1" resource="0"
+            file="Source/MidiWheelsState.cpp"/>
+      <FILE id="aOm2My" name="MidiWheelsState.h" compile="0" resource="0"
+            file="Source/MidiWheelsState.h"/>
       <FILE id="BoUh1h" name="SmartMidi.h" compile="0" resource="0" file="Source/SmartMidi.h"/>
       <FILE id="HiU71p" name="VirtualMidi.h" compile="0" resource="0" file="Source/VirtualMidi.h"/>
     </GROUP>

@@ -25,9 +25,16 @@
 
 
 
-                                  
+//==============================================================================
+/**
+                                                                    //[Comments]
+    An auto-generated component, created by the Projucer.
+
+    Describe your class and how it works here!
+                                                                    //[/Comments]
+*/
 class MidiWheelsComponent  : public Component,
-                public Slider::Listener
+                             public Slider::Listener
 {
 public:
     //==============================================================================
@@ -41,7 +48,7 @@ public:
     void paint (Graphics& g) override;
     void resized() override;
     void sliderValueChanged (Slider* sliderThatWasMoved) override;
-    void setWheels(MidiInput* src/*source*/, const MidiMessage& message);
+
 
 
 private:
@@ -49,8 +56,8 @@ private:
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<Slider> pitchWheel;
-    std::unique_ptr<Slider> modWheel;
+    std::unique_ptr<Slider> PitchWheel;
+    std::unique_ptr<Slider> ModWheel;
 
 
     //==============================================================================

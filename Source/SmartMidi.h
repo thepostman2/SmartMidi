@@ -34,6 +34,7 @@
 *******************************************************************************/
 #include "VirtualMidi.h"
 #include "MidiWheelsComponent.h"
+#include "MidiWheelsState.h"
 #pragma once
 
 
@@ -146,14 +147,14 @@ public:
         sendToOutputs (NULL,m);
     }
 
-    void handlePitchWheel(int midiChannel,  int position) override
+    void handlePitchWheel(MidiWheelsState* source, int midiChannel,int position=0) override
     {
         MidiMessage m (MidiMessage::pitchWheel(midiChannel,  position));
         m.setTimeStamp (Time::getMillisecondCounterHiRes() * 0.001);
         sendToOutputs (NULL,m);
     }
 
-    void handleModWheel(int midiChannel,  int position)override
+    void handleModWheel(MidiWheelsState* source,int midiChannel,  int position)override
     {
         MidiMessage m (MidiMessage::pitchWheel(midiChannel,  position));
         m.setTimeStamp (Time::getMillisecondCounterHiRes() * 0.001);
@@ -174,7 +175,7 @@ public:
             midiString << "\n";
         }
         if(mm.isPitchWheel() || mm.isControllerOfType(1)){
-            midiWheels.setWheels( NULL, mm);
+            midiWheelsState.processNextMidiEvent(mm);//midiWheels.setWheels( NULL, mm);
             midiString << (mm.isPitchWheel() ? String ("Pitch wheel: ") : String ("Mod wheel: "));
             //midiString << (MidiMessage::getControllerValue(mm.getControllerValue(),true,true,true));
             midiString << (String (" value = "));
